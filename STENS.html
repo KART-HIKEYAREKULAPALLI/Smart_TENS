@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Smart-TENS</title>
+<script>
+var Socket;
+function init() {Socket = new WebSocket('ws://' + window.location.hostname + ':81/');
+document.getElementById("ip").innerHTML=window.location.hostname;
+}
+function conventional(){
+document.getElementById("mode").innerHTML="Conventional Mode Activated";
+Socket.send("conventional");
+}
+function acupuncture(){
+document.getElementById("mode").innerHTML="Acupuncture Mode Activated";
+Socket.send("acupuncture");
+}
+function intense(){
+document.getElementById("mode").innerHTML="Intense Mode Activated";
+Socket.send("intense");
+}
+function actstop(){
+document.getElementById("mode").innerHTML="Stop Command Activated";
+Socket.send("actstop");
+}
+</script>
+</head>
+<body onload="javascript:init()">
+<h1>Smart TENS Device</h1>
+</hr>
+<h2> IP of Smart TENS Device </h2>
+<p id="ip"> </p>
+</hr>
+<br>
+<h2>Device Mode</h2>
+<p id="mode" > </p>
+<br>
+</hr>
+<h2>Select Mode</h2>
+</hr>
+<br>
+<div>
+<button id="conventional" onclick="javascript:conventional();">Conventional TENS</button>
+</div>
+<br>
+<div>
+<button id="acupuncture" onclick="javascript:acupuncture();">Acupuncture TENS</button>
+</div>
+<br>
+<div>
+<button id="Intense" onclick="javascript:intense();">Intense TENS</button>
+</div>
+<br>
+<div>
+<h2>Stop Action </h2>
+<button id="stop" onclick="javascript:actstop();">Stop</button>
+</div>
+<br>
+</body>
+</html>
